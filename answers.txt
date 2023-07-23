@@ -1,0 +1,43 @@
+Lucas Clarke
+clarkelj
+1263578
+
+1. Should the server accept calls from everyone, or just a subset of users?
+Project: The server should accept calls from everyone, as its concept is providing access to these functions for 
+all people, and not worry about security concerns or malicious intents.
+Real-world: In the real world, it would probably be best to limit calls to authenticated users, as although the
+functions being performed are not malicious
+
+2. Should authentication etc. be provided by the RPC framework, or by the functions that use the RPC framework?
+
+3. What transport layer protocol should be used? What are the trade-offs?
+
+4. In which function(s) should the socket(s) be created?
+
+5. Should rpc_client and rpc_server be allocated dynamically or statically? What are the implications
+for the client and server code?
+
+
+6. What happens if one host uses big-endian byte order and the other uses little-endian? How does that relate
+to “network byte order”?
+
+
+
+
+"You should design and document a simple application layer protocol for this RPC system. (It can be very simple.)
+Describe it in the file answers.txt, in enough detail that someone else could implement the protocol. Together
+with the questions above, this is worth 1 mark.
+Note that size_t is system-dependent. You will need to choose a system-independent way to encode the size of
+the data block in the packet. You can use a universal encoding, like Elias gamma coding (see Wikipedia) which
+can specify arbitrarily long strings, or you can use a fixed sized field, which is simpler to decode but limits the size
+of the string. Explain your choice in your protocol description.
+In all test cases, len < 100 000.
+If data2_len is too large to be encoded in your packet format, the relevant function in rpc.c should print
+"Overlength error" to stderr and return an error.
+The protocol should specify error responses for routine failures, such as a request for a procedure that does not
+exist.
+The protocol should work correctly even if there are IP layer packet loss and duplication.
+The protocol should handle the fact that IP packets have a maximum allowed size.
+Decide what transport layer protocol to use. (You will almost certainly choose TCP, but briefly mention the pros
+and cons of alternatives.)
+The transport layer protocol should run on top of IPv6."
